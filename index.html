@@ -1,48 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>For Golu Babu</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For Golu Babu ❤️</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<div id="lockScreen" style="position:fixed; inset:0; background:linear-gradient(135deg,#fff8f3,#ffe1e6); z-index:9999; display:flex; align-items:center; justify-content:center; padding:24px;">
-  <div style="max-width:420px; width:100%; background:white; border-radius:28px; padding:32px; text-align:center; box-shadow:0 20px 60px rgba(0,0,0,.12);">
-    <h2 style="margin-top:0;">This vault is locked ❤️</h2>
-    <p>Enter the secret word to open it.</p>
-    <input id="passwordInput" type="password" placeholder="Secret word" style="width:100%; padding:14px; border-radius:14px; border:1px solid #ddd; font-size:16px;">
-    <button onclick="unlockVault()" style="margin-top:16px; width:100%; padding:14px; border:0; border-radius:14px; background:#8b2f4f; color:white; font-size:16px; cursor:pointer;">Unlock</button>
-    <p id="errorMsg" style="color:#8b2f4f; display:none;">This birthday vault is locked ❤️</p>
+  <div id="lockScreen" style="position:fixed; inset:0; background:linear-gradient(135deg,#fff8f3,#ffe1e6); z-index:9999; display:flex; align-items:center; justify-content:center; padding:24px;">
+    <div style="max-width:430px; width:100%; background:white; border-radius:28px; padding:34px; text-align:center; box-shadow:0 20px 60px rgba(0,0,0,.12);">
+      <h2 style="margin-top:0; color:#8b2f4f;">This Birthday Vault is Locked ❤️</h2>
+      <p style="color:#6f5656;">Enter the secret word to open it.</p>
+      <p style="font-size:14px; color:#8b2f4f;"><b>Hint:</b> Not Kanika. The other name.</p>
+
+      <input id="passwordInput" type="password" placeholder="Secret word" style="width:100%; padding:14px; border-radius:14px; border:1px solid #ddd; font-size:16px;">
+
+      <button onclick="unlockVault()" style="margin-top:16px; width:100%; padding:14px; border:0; border-radius:14px; background:#8b2f4f; color:white; font-size:16px; cursor:pointer;">
+        Unlock
+      </button>
+
+      <p id="errorMsg" style="color:#8b2f4f; display:none;">Wrong word, Babbu. Try again ❤️</p>
+    </div>
   </div>
-</div>
 
-<script>
-function unlockVault() {
-  const password = document.getElementById("passwordInput").value.trim().toLowerCase();
-  if (password === "golu") {
-    document.getElementById("lockScreen").style.display = "none";
-    localStorage.setItem("vaultUnlocked", "yes");
-  } else {
-    document.getElementById("errorMsg").style.display = "block";
-  }
-}
+  <div id="welcomePhoto" style="display:none; text-align:center; padding:32px 20px 10px;">
+    <img
+      src="WhatsApp%20Image%202026-06-06%20at%201.58.01%20PM.jpeg"
+      alt="Golu Babu"
+      style="max-width:360px; width:90%; border-radius:30px; box-shadow:0 22px 65px rgba(0,0,0,.18);"
+    >
 
-if (localStorage.getItem("vaultUnlocked") === "yes") {
-  window.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("lockScreen").style.display = "none";
-  });
-}
-</script>  <div class="hearts" aria-hidden="true"></div>
+    <h2 style="font-family:Georgia,serif; color:#8b2f4f; margin-top:20px; margin-bottom:8px;">
+      Welcome, Golu Babu ❤️
+    </h2>
+
+    <p style="font-family:Georgia,serif; color:#6f5656;">
+      One page. One day. One story at a time.
+    </p>
+  </div>
+
+  <script>
+    function openVault() {
+      document.getElementById("lockScreen").style.display = "none";
+      document.getElementById("welcomePhoto").style.display = "block";
+    }
+
+    function unlockVault() {
+      const password = document.getElementById("passwordInput").value.trim().toLowerCase();
+
+      if (password === "golu" || password === "golubabu" || password === "golu babu") {
+        openVault();
+        localStorage.setItem("vaultUnlocked", "yes");
+      } else {
+        document.getElementById("errorMsg").style.display = "block";
+      }
+    }
+
+    window.addEventListener("DOMContentLoaded", function () {
+      if (localStorage.getItem("vaultUnlocked") === "yes") {
+        openVault();
+      }
+
+      const input = document.getElementById("passwordInput");
+      if (input) {
+        input.addEventListener("keypress", function(event) {
+          if (event.key === "Enter") {
+            unlockVault();
+          }
+        });
+      }
+    });
+  </script>
+
+  <div class="hearts" aria-hidden="true"></div>
 
   <main class="page-shell">
+
     <section class="hero" aria-labelledby="page-title">
       <p class="eyebrow">A Birthday Vault for Golu Babu</p>
-      <h1 id="page-title">For Golu Babu &#10084;&#65039;</h1>
+
+      <h1 id="page-title">For Golu Babu ❤️</h1>
+
       <p class="message">
         Something special is coming.<br>
         Come back every day.<br>
@@ -54,14 +99,17 @@ if (localStorage.getItem("vaultUnlocked") === "yes") {
           <span id="days">00</span>
           <small>Days</small>
         </div>
+
         <div class="time-card">
           <span id="hours">00</span>
           <small>Hours</small>
         </div>
+
         <div class="time-card">
           <span id="minutes">00</span>
           <small>Minutes</small>
         </div>
+
         <div class="time-card">
           <span id="seconds">00</span>
           <small>Seconds</small>
@@ -71,52 +119,65 @@ if (localStorage.getItem("vaultUnlocked") === "yes") {
 
     <section class="cards-section" aria-label="Daily birthday cards">
       <div class="cards-grid" id="cardsGrid">
+
         <article class="love-card locked" data-day="1" data-unlock="06-07">
-          <span class="lock">Lock</span>
+          <span class="lock">🔒</span>
           <h2>Day 1</h2>
-          <p>A tiny promise waits here.</p>
+          <p>Before We Begin</p>
         </article>
+
         <article class="love-card locked" data-day="2" data-unlock="06-08">
-          <span class="lock">Lock</span>
+          <span class="lock">🔒</span>
           <h2>Day 2</h2>
-          <p>A soft memory is tucked inside.</p>
+          <p>The Version Everyone Sees</p>
         </article>
+
         <article class="love-card locked" data-day="3" data-unlock="06-09">
-          <span class="lock">Lock</span>
+          <span class="lock">🔒</span>
           <h2>Day 3</h2>
-          <p>A little smile is saved for you.</p>
+          <p>The Version I See</p>
         </article>
+
         <article class="love-card locked" data-day="4" data-unlock="06-10">
-          <span class="lock">Lock</span>
+          <span class="lock">🔒</span>
           <h2>Day 4</h2>
-          <p>A warm secret is almost ready.</p>
+          <p>The Little Things</p>
         </article>
+
         <article class="love-card locked" data-day="5" data-unlock="06-11">
-          <span class="lock">Lock</span>
+          <span class="lock">🔒</span>
           <h2>Day 5</h2>
-          <p>A sweet surprise is getting closer.</p>
+          <p>Questions I Never Asked</p>
         </article>
+
         <article class="love-card locked" data-day="6" data-unlock="06-12">
-          <span class="lock">Lock</span>
+          <span class="lock">🔒</span>
           <h2>Day 6</h2>
-          <p>A heartbeat of happiness waits.</p>
+          <p>What Changed In Me</p>
         </article>
+
         <article class="love-card locked" data-day="7" data-unlock="06-13">
-          <span class="lock">Lock</span>
+          <span class="lock">🔒</span>
           <h2>Day 7</h2>
-          <p>One last note before the big day.</p>
+          <p>Things Left Unsaid</p>
         </article>
+
         <article class="love-card locked birthday-card" data-day="8" data-unlock="06-14">
-          <span class="lock">Lock</span>
-          <h2>14 June - Birthday Surprise</h2>
-          <p>The brightest page opens on your birthday.</p>
+          <span class="lock">🔒</span>
+          <h2>14 June</h2>
+          <p>Happy Birthday, Golu Babu</p>
         </article>
+
       </div>
     </section>
 
-    <p class="message">This page is not meant for everyone. It is only for the person it was made for.</p>
+    <p class="message">
+      This page is not meant for everyone. It is only for the person it was made for.
+    </p>
+
   </main>
 
   <script src="script.js"></script>
+
 </body>
 </html>
