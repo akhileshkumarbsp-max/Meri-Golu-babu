@@ -57,17 +57,12 @@
 
       if (password === "golu" || password === "golubabu" || password === "golu babu") {
         openVault();
-        localStorage.setItem("vaultUnlocked", "yes");
       } else {
         document.getElementById("errorMsg").style.display = "block";
       }
     }
 
     window.addEventListener("DOMContentLoaded", function () {
-      if (localStorage.getItem("vaultUnlocked") === "yes") {
-        openVault();
-      }
-
       const input = document.getElementById("passwordInput");
       if (input) {
         input.addEventListener("keypress", function(event) {
