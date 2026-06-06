@@ -10,6 +10,20 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
+  <style>
+    .love-card { cursor: pointer; }
+    .home-note {
+      max-width: 760px;
+      margin: 22px auto 34px;
+      padding: 22px;
+      border-radius: 22px;
+      background: rgba(255,255,255,.64);
+      box-shadow: 0 18px 52px rgba(122, 38, 58, 0.12);
+      text-align: center;
+      line-height: 1.7;
+      color: #4a3238;
+    }
+  </style>
 </head>
 
 <body>
@@ -19,31 +33,16 @@
       <h2 style="margin-top:0; color:#8b2f4f;">This Birthday Vault is Locked ❤️</h2>
       <p style="color:#6f5656;">Enter the secret word to open it.</p>
       <p style="font-size:14px; color:#8b2f4f;"><b>Hint:</b> Not Kanika. The other name.</p>
-
       <input id="passwordInput" type="password" placeholder="Secret word" style="width:100%; padding:14px; border-radius:14px; border:1px solid #ddd; font-size:16px;">
-
-      <button onclick="unlockVault()" style="margin-top:16px; width:100%; padding:14px; border:0; border-radius:14px; background:#8b2f4f; color:white; font-size:16px; cursor:pointer;">
-        Unlock
-      </button>
-
+      <button onclick="unlockVault()" style="margin-top:16px; width:100%; padding:14px; border:0; border-radius:14px; background:#8b2f4f; color:white; font-size:16px; cursor:pointer;">Unlock</button>
       <p id="errorMsg" style="color:#8b2f4f; display:none;">Wrong word, Babbu. Try again ❤️</p>
     </div>
   </div>
 
   <div id="welcomePhoto" style="display:none; text-align:center; padding:32px 20px 10px;">
-    <img
-      src="WhatsApp%20Image%202026-06-06%20at%201.58.01%20PM.jpeg"
-      alt="Golu Babu"
-      style="max-width:360px; width:90%; border-radius:30px; box-shadow:0 22px 65px rgba(0,0,0,.18);"
-    >
-
-    <h2 style="font-family:Georgia,serif; color:#8b2f4f; margin-top:20px; margin-bottom:8px;">
-      Welcome, Golu Babu ❤️
-    </h2>
-
-    <p style="font-family:Georgia,serif; color:#6f5656;">
-      One page. One day. One story at a time.
-    </p>
+    <img src="WhatsApp%20Image%202026-06-06%20at%201.58.01%20PM.jpeg" alt="Golu Babu" style="max-width:360px; width:90%; border-radius:30px; box-shadow:0 22px 65px rgba(0,0,0,.18);">
+    <h2 style="font-family:Georgia,serif; color:#8b2f4f; margin-top:20px; margin-bottom:8px;">Welcome, Golu Babu ❤️</h2>
+    <p style="font-family:Georgia,serif; color:#6f5656;">One page. One day. One story at a time.</p>
   </div>
 
   <script>
@@ -51,128 +50,51 @@
       document.getElementById("lockScreen").style.display = "none";
       document.getElementById("welcomePhoto").style.display = "block";
     }
-
     function unlockVault() {
       const password = document.getElementById("passwordInput").value.trim().toLowerCase();
-
-      if (password === "golu" || password === "golubabu" || password === "golu babu") {
-        openVault();
-      } else {
-        document.getElementById("errorMsg").style.display = "block";
-      }
+      if (password === "golu" || password === "golubabu" || password === "golu babu") openVault();
+      else document.getElementById("errorMsg").style.display = "block";
     }
-
     window.addEventListener("DOMContentLoaded", function () {
       const input = document.getElementById("passwordInput");
-      if (input) {
-        input.addEventListener("keypress", function(event) {
-          if (event.key === "Enter") {
-            unlockVault();
-          }
-        });
-      }
+      if (input) input.addEventListener("keypress", e => { if (e.key === "Enter") unlockVault(); });
     });
   </script>
 
   <div class="hearts" aria-hidden="true"></div>
 
   <main class="page-shell">
-
     <section class="hero" aria-labelledby="page-title">
       <p class="eyebrow">A Birthday Vault for Golu Babu</p>
-
       <h1 id="page-title">For Golu Babu ❤️</h1>
-
-      <p class="message">
-        Something special is coming.<br>
-        Come back every day.<br>
-        A new page unlocks daily until 14 June.
-      </p>
-
+      <p class="message">Something special is coming.<br>Come back every day.<br>A new page unlocks daily until 14 June.</p>
       <div class="countdown" aria-label="Birthday countdown">
-        <div class="time-card">
-          <span id="days">00</span>
-          <small>Days</small>
-        </div>
-
-        <div class="time-card">
-          <span id="hours">00</span>
-          <small>Hours</small>
-        </div>
-
-        <div class="time-card">
-          <span id="minutes">00</span>
-          <small>Minutes</small>
-        </div>
-
-        <div class="time-card">
-          <span id="seconds">00</span>
-          <small>Seconds</small>
-        </div>
+        <div class="time-card"><span id="days">00</span><small>Days</small></div>
+        <div class="time-card"><span id="hours">00</span><small>Hours</small></div>
+        <div class="time-card"><span id="minutes">00</span><small>Minutes</small></div>
+        <div class="time-card"><span id="seconds">00</span><small>Seconds</small></div>
       </div>
+    </section>
+
+    <section class="home-note">
+      This is not a normal countdown. Each page has one feeling, one memory, and one small piece of my heart. Open it slowly, Golu Babu.
     </section>
 
     <section class="cards-section" aria-label="Daily birthday cards">
       <div class="cards-grid" id="cardsGrid">
-
-        <article class="love-card locked" data-day="1" data-unlock="06-07">
-          <span class="lock">🔒</span>
-          <h2>Day 1</h2>
-          <p>Before We Begin</p>
-        </article>
-
-        <article class="love-card locked" data-day="2" data-unlock="06-08">
-          <span class="lock">🔒</span>
-          <h2>Day 2</h2>
-          <p>The Version Everyone Sees</p>
-        </article>
-
-        <article class="love-card locked" data-day="3" data-unlock="06-09">
-          <span class="lock">🔒</span>
-          <h2>Day 3</h2>
-          <p>The Version I See</p>
-        </article>
-
-        <article class="love-card locked" data-day="4" data-unlock="06-10">
-          <span class="lock">🔒</span>
-          <h2>Day 4</h2>
-          <p>The Little Things</p>
-        </article>
-
-        <article class="love-card locked" data-day="5" data-unlock="06-11">
-          <span class="lock">🔒</span>
-          <h2>Day 5</h2>
-          <p>Questions I Never Asked</p>
-        </article>
-
-        <article class="love-card locked" data-day="6" data-unlock="06-12">
-          <span class="lock">🔒</span>
-          <h2>Day 6</h2>
-          <p>What Changed In Me</p>
-        </article>
-
-        <article class="love-card locked" data-day="7" data-unlock="06-13">
-          <span class="lock">🔒</span>
-          <h2>Day 7</h2>
-          <p>Things Left Unsaid</p>
-        </article>
-
-        <article class="love-card locked birthday-card" data-day="8" data-unlock="06-14">
-          <span class="lock">🔒</span>
-          <h2>14 June</h2>
-          <p>Happy Birthday, Golu Babu</p>
-        </article>
-
+        <article class="love-card locked" data-day="1" data-unlock="06-07"><span class="lock">🔒</span><h2>Day 1</h2><p>Before We Begin</p></article>
+        <article class="love-card locked" data-day="2" data-unlock="06-08"><span class="lock">🔒</span><h2>Day 2</h2><p>The Girl Who Asked Too Many Questions</p></article>
+        <article class="love-card locked" data-day="3" data-unlock="06-09"><span class="lock">🔒</span><h2>Day 3</h2><p>When You Became Important</p></article>
+        <article class="love-card locked" data-day="4" data-unlock="06-10"><span class="lock">🔒</span><h2>Day 4</h2><p>The Little Things</p></article>
+        <article class="love-card locked" data-day="5" data-unlock="06-11"><span class="lock">🔒</span><h2>Day 5</h2><p>Questions You Can Ask Me</p></article>
+        <article class="love-card locked" data-day="6" data-unlock="06-12"><span class="lock">🔒</span><h2>Day 6</h2><p>What Changed In Me</p></article>
+        <article class="love-card locked" data-day="7" data-unlock="06-13"><span class="lock">🔒</span><h2>Day 7</h2><p>Things Left Unsaid</p></article>
+        <article class="love-card locked birthday-card" data-day="8" data-unlock="06-14"><span class="lock">🔒</span><h2>14 June</h2><p>Happy Birthday, Golu Babu</p></article>
       </div>
     </section>
 
-    <p class="message">
-      This page is not meant for everyone. It is only for the person it was made for.
-    </p>
-
+    <p class="message">This page is not meant for everyone. It is only for the person it was made for.</p>
   </main>
-
   <script src="script.js"></script>
-
 </body>
 </html>
