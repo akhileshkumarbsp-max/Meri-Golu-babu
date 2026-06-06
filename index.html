@@ -10,7 +10,34 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="hearts" aria-hidden="true"></div>
+
+<div id="lockScreen" style="position:fixed; inset:0; background:linear-gradient(135deg,#fff8f3,#ffe1e6); z-index:9999; display:flex; align-items:center; justify-content:center; padding:24px;">
+  <div style="max-width:420px; width:100%; background:white; border-radius:28px; padding:32px; text-align:center; box-shadow:0 20px 60px rgba(0,0,0,.12);">
+    <h2 style="margin-top:0;">This vault is locked ❤️</h2>
+    <p>Enter the secret word to open it.</p>
+    <input id="passwordInput" type="password" placeholder="Secret word" style="width:100%; padding:14px; border-radius:14px; border:1px solid #ddd; font-size:16px;">
+    <button onclick="unlockVault()" style="margin-top:16px; width:100%; padding:14px; border:0; border-radius:14px; background:#8b2f4f; color:white; font-size:16px; cursor:pointer;">Unlock</button>
+    <p id="errorMsg" style="color:#8b2f4f; display:none;">This birthday vault is locked ❤️</p>
+  </div>
+</div>
+
+<script>
+function unlockVault() {
+  const password = document.getElementById("passwordInput").value.trim().toLowerCase();
+  if (password === "golu") {
+    document.getElementById("lockScreen").style.display = "none";
+    localStorage.setItem("vaultUnlocked", "yes");
+  } else {
+    document.getElementById("errorMsg").style.display = "block";
+  }
+}
+
+if (localStorage.getItem("vaultUnlocked") === "yes") {
+  window.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("lockScreen").style.display = "none";
+  });
+}
+</script>  <div class="hearts" aria-hidden="true"></div>
 
   <main class="page-shell">
     <section class="hero" aria-labelledby="page-title">
