@@ -3,6 +3,17 @@ const birthdayDay = 14;
 const countdownIds = ["days", "hours", "minutes", "seconds"];
 const heartsContainer = document.querySelector(".hearts");
 
+const dayPages = {
+  "1": "day1.html",
+  "2": "day2.html",
+  "3": "day3.html",
+  "4": "day4.html",
+  "5": "day5.html",
+  "6": "day6.html",
+  "7": "day7.html",
+  "8": "birthday.html"
+};
+
 function getBirthdayTarget() {
   const now = new Date();
   const target = new Date(now.getFullYear(), birthdayMonth, birthdayDay, 0, 0, 0);
@@ -24,26 +35,45 @@ function updateCountdown() {
   ];
 
   countdownIds.forEach((id, index) => {
-    document.getElementById(id).textContent = String(values[index]).padStart(2, "0");
+    const el = document.getElementById(id);
+    if (el) el.textContent = String(values[index]).padStart(2, "0");
   });
 }
 
-function updateCards() {
+function isCardUnlocked(card) {
   const now = new Date();
   const targetYear = getBirthdayTarget().getFullYear();
+  const [month, day] = card.dataset.unlock.split("-").map(Number);
+  const unlockDate = new Date(targetYear, month - 1, day, 0, 0, 0);
+  return now >= unlockDate;
+}
 
+function updateCards() {
   document.querySelectorAll(".love-card").forEach((card) => {
-    const [month, day] = card.dataset.unlock.split("-").map(Number);
-    const unlockDate = new Date(targetYear, month - 1, day, 0, 0, 0);
-    const isUnlocked = now >= unlockDate;
-
+    const isUnlocked = isCardUnlocked(card);
     card.classList.toggle("locked", !isUnlocked);
     card.classList.toggle("unlocked", isUnlocked);
-    card.querySelector(".lock").textContent = isUnlocked ? "Open" : "Lock";
+    const lock = card.querySelector(".lock");
+    if (lock) lock.textContent = isUnlocked ? "Open" : "Lock";
+  });
+}
+
+function setupCardClicks() {
+  document.querySelectorAll(".love-card").forEach((card) => {
+    card.addEventListener("click", () => {
+      const isUnlocked = isCardUnlocked(card);
+      const page = dayPages[card.dataset.day];
+      if (isUnlocked && page) {
+        window.location.href = page;
+      } else {
+        alert("This page opens on its day, Golu Babu ❤️");
+      }
+    });
   });
 }
 
 function createHeart() {
+  if (!heartsContainer) return;
   const heart = document.createElement("span");
   const size = Math.random() * 16 + 12;
   heart.className = "heart";
@@ -59,5 +89,7 @@ function createHeart() {
 
 updateCountdown();
 updateCards();
+setupCardClicks();
 setInterval(updateCountdown, 1000);
+setInterval(updateCards, 60 * 1000);
 setInterval(createHeart, 700);
