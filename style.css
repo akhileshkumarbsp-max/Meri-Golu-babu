@@ -1,11 +1,14 @@
 :root {
-  --rose: #b84a62;
-  --deep-rose: #7a263a;
-  --cream: #fff7ee;
-  --blush: #f8d9d7;
-  --gold: #d9a957;
-  --ink: #3e2530;
-  --shadow: 0 24px 70px rgba(122, 38, 58, 0.22);
+  --rose: #d88aa7;
+  --deep-rose: #5a2340;
+  --cream: #fff9f4;
+  --blush: #f7c7d9;
+  --gold: #c99a4f;
+  --ink: #2f2230;
+  --wine: #321827;
+  --mauve: #8b4c68;
+  --glass: rgba(255, 255, 255, 0.68);
+  --shadow: 0 28px 80px rgba(72, 25, 49, 0.22);
 }
 
 * {
@@ -18,8 +21,10 @@ body {
   color: var(--ink);
   font-family: "Inter", system-ui, sans-serif;
   background:
-    radial-gradient(circle at top left, rgba(255, 218, 188, 0.8), transparent 32rem),
-    linear-gradient(135deg, #fff7ee 0%, #f7d6d6 46%, #f3b7bc 100%);
+    radial-gradient(circle at 14% 10%, rgba(255, 226, 190, 0.9), transparent 26rem),
+    radial-gradient(circle at 86% 8%, rgba(255, 184, 214, 0.62), transparent 24rem),
+    radial-gradient(circle at 50% 92%, rgba(139, 76, 104, 0.36), transparent 30rem),
+    linear-gradient(135deg, #fffaf5 0%, #f7d7e5 42%, #c98aa6 100%);
   overflow-x: hidden;
 }
 
@@ -29,14 +34,25 @@ body::before {
   content: "";
   pointer-events: none;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.22) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.18) 1px, transparent 1px);
-  background-size: 52px 52px;
-  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), transparent 80%);
+    linear-gradient(rgba(255, 255, 255, 0.26) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.2) 1px, transparent 1px);
+  background-size: 46px 46px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.78), transparent 82%);
+}
+
+body::after {
+  position: fixed;
+  inset: 18px;
+  content: "";
+  pointer-events: none;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 34px;
+  z-index: 0;
 }
 
 .page-shell {
   position: relative;
+  z-index: 1;
   width: min(1120px, calc(100% - 32px));
   margin: 0 auto;
   padding: 56px 0 72px;
@@ -53,10 +69,10 @@ body::before {
 
 .eyebrow {
   margin: 0 0 14px;
-  color: var(--deep-rose);
+  color: var(--mauve);
   font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
+  font-weight: 800;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
 }
 
@@ -66,7 +82,7 @@ h1 {
   font-size: clamp(4.2rem, 11vw, 9.5rem);
   line-height: 0.9;
   color: var(--deep-rose);
-  text-shadow: 0 10px 34px rgba(122, 38, 58, 0.2);
+  text-shadow: 0 12px 38px rgba(90, 35, 64, 0.22);
 }
 
 .message {
@@ -90,9 +106,9 @@ h1 {
   display: grid;
   place-items: center;
   padding: 18px 12px;
-  border: 1px solid rgba(122, 38, 58, 0.18);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.48);
+  border: 1px solid rgba(90, 35, 64, 0.16);
+  border-radius: 22px;
+  background: var(--glass);
   box-shadow: var(--shadow);
   backdrop-filter: blur(18px);
 }
@@ -103,13 +119,13 @@ h1 {
   font-size: clamp(2.4rem, 8vw, 4rem);
   font-weight: 700;
   line-height: 0.9;
-  color: var(--rose);
+  color: var(--deep-rose);
 }
 
 .time-card small {
-  color: rgba(62, 37, 48, 0.72);
+  color: rgba(47, 34, 48, 0.72);
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 800;
   text-transform: uppercase;
 }
 
@@ -127,10 +143,10 @@ h1 {
   position: relative;
   min-height: 210px;
   padding: 22px;
-  border: 1px solid rgba(122, 38, 58, 0.16);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.58);
-  box-shadow: 0 18px 52px rgba(122, 38, 58, 0.14);
+  border: 1px solid rgba(90, 35, 64, 0.15);
+  border-radius: 26px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.78), rgba(255, 247, 250, 0.54));
+  box-shadow: 0 20px 58px rgba(72, 25, 49, 0.15);
   overflow: hidden;
   transition: transform 220ms ease, border-color 220ms ease, background 220ms ease;
 }
@@ -139,13 +155,15 @@ h1 {
   position: absolute;
   inset: 0;
   content: "";
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.34), transparent 48%);
+  background:
+    radial-gradient(circle at 18% 14%, rgba(255,255,255,.7), transparent 9rem),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.34), transparent 48%);
   pointer-events: none;
 }
 
 .love-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(184, 74, 98, 0.42);
+  transform: translateY(-5px);
+  border-color: rgba(90, 35, 64, 0.34);
 }
 
 .love-card h2 {
@@ -161,7 +179,7 @@ h1 {
 .love-card p {
   position: relative;
   margin: 0;
-  color: rgba(62, 37, 48, 0.72);
+  color: rgba(47, 34, 48, 0.74);
   line-height: 1.55;
 }
 
@@ -192,8 +210,8 @@ h1 {
 }
 
 .unlocked {
-  background: rgba(255, 251, 244, 0.82);
-  border-color: rgba(217, 169, 87, 0.48);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(255, 241, 247, 0.74));
+  border-color: rgba(201, 154, 79, 0.52);
 }
 
 .unlocked .lock {
@@ -220,7 +238,7 @@ h1 {
   opacity: 0;
   transform: rotate(45deg);
   animation: float-heart linear forwards;
-  background: rgba(184, 74, 98, 0.42);
+  background: rgba(90, 35, 64, 0.38);
 }
 
 .heart::before,
@@ -267,6 +285,8 @@ h1 {
 }
 
 @media (max-width: 560px) {
+  body::after { inset: 9px; border-radius: 24px; }
+
   .page-shell {
     width: min(100% - 22px, 1120px);
     padding: 34px 0 48px;
