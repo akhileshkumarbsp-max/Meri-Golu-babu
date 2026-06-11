@@ -1,1 +1,227 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Day 6 - What Changed In Me</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css"><style>.letter{max-width:880px;margin:60px auto;padding:34px;background:rgba(255,255,255,.78);border-radius:28px;box-shadow:0 24px 70px rgba(95,54,54,.12);line-height:1.9}.photo-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:28px}.photo-grid img{width:100%;height:360px;object-fit:contain;background:#fff7f6;border-radius:22px;box-shadow:0 14px 40px rgba(0,0,0,.12)}.letter h1{font-family:'Cormorant Garamond',serif;font-size:50px;color:#7b2d45;margin:0 0 12px}.letter p{font-size:18px;color:#3d3030}.quote,.formbox{margin:28px 0;padding:22px;border-left:4px solid #8b2f4f;background:#fff7f6;border-radius:16px}.answer-frame{width:100%;height:520px;border:0;border-radius:18px;background:#fff}.back{display:inline-block;margin-top:20px;color:#8b2f4f;text-decoration:none;font-weight:600}@media(max-width:700px){.photo-grid{grid-template-columns:1fr}.photo-grid img{height:auto;max-height:520px}}</style></head><body><div class="hearts" aria-hidden="true"></div><main class="page-shell"><section class="letter"><div class="photo-grid"><img src="photos/day%201%20(17).jpeg" alt="Golu Babu"><img src="photos/day%201%20(19).jpeg" alt="Golu Babu"></div><p class="eyebrow">Day 6</p><h1>What Changed In Me</h1><p>You brought back something I thought I had lost.</p><p>For a long time, I had started believing that maybe nobody would really understand me. Maybe I had to carry things alone. Maybe care, softness, and emotional safety were things other people experienced, not me.</p><p>Then you came into my life.</p><p>Not with big promises. Not with dramatic words. But through small things.</p><p>A good morning message. A random call. A voice note. A hug. The way you understood my mood. The way you could see the child in me when most people only saw anger or toughness.</p><div class="quote">You made me feel understood. That is not a small gift. It is the rarest one.</div><p>You made me imagine that if I ever build a life with someone, I would want qualities that you have: care, patience, emotional safety, kindness, and love that shows up in small actions.</p><p>You did not ask me to change. You just made me want to be someone who deserved the care you were giving.</p><p>You brought happiness back into parts of my life that had become very quiet.</p><p>And for that, Kanika Babu, I will always be grateful.</p><div class="formbox"><b>Tell me one thing from your heart today.</b><br><iframe class="answer-frame" src="https://docs.google.com/forms/d/1GjmLXf22PvDR7gh5ygbMnG5sw57TRI-eJoIwJFRBhBo/viewform?embedded=true">Loading…</iframe></div><a class="back" href="index.html">← Back to the vault</a></section></main><script src="script.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Day 6 - The Place Where You Don't Have To Hide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    :root{
+      --ink:#352c36;
+      --deep:#6f2d46;
+      --soft:#fff7f4;
+      --card:rgba(255,255,255,.82);
+      --line:rgba(126,60,84,.18);
+    }
+    body{
+      min-height:100vh;
+      background:
+        radial-gradient(circle at 20% 12%, rgba(255,220,230,.85), transparent 28%),
+        radial-gradient(circle at 80% 8%, rgba(255,242,201,.72), transparent 24%),
+        radial-gradient(circle at 50% 92%, rgba(216,225,255,.72), transparent 36%),
+        linear-gradient(135deg,#fff8f1 0%,#ffe9ef 40%,#f6eeff 100%);
+      overflow-x:hidden;
+    }
+    .emoji-rain{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+    .emoji-rain span{position:absolute;top:-40px;font-size:18px;opacity:.46;animation:fall linear infinite;filter:blur(.1px);}
+    @keyframes fall{to{transform:translateY(110vh) rotate(28deg);opacity:.08;}}
+    .page-shell{position:relative;z-index:1;}
+    .letter{max-width:900px;margin:54px auto;padding:34px;background:var(--card);border:1px solid rgba(255,255,255,.7);border-radius:30px;box-shadow:0 28px 90px rgba(112,48,72,.16);line-height:1.9;backdrop-filter:blur(14px);}
+    .photo-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:28px;}
+    .photo-grid img{width:100%;height:340px;object-fit:contain;background:#fffaf9;border-radius:24px;box-shadow:0 14px 42px rgba(0,0,0,.12);border:1px solid rgba(255,255,255,.75);}
+    .letter h1{font-family:'Cormorant Garamond',serif;font-size:52px;line-height:1.05;color:var(--deep);margin:0 0 14px;}
+    .letter h2{font-family:'Cormorant Garamond',serif;font-size:34px;color:var(--deep);margin:8px 0 10px;}
+    .letter p,.letter li{font-size:18px;color:var(--ink);}
+    .soft-card,.choice-box,.heart-box,.quote{margin:24px 0;padding:22px;background:rgba(255,247,246,.88);border:1px solid var(--line);border-radius:22px;box-shadow:0 12px 34px rgba(111,45,70,.08);}
+    .quote{border-left:5px solid rgba(111,45,70,.6);}
+    .small-line{font-size:15px;color:#7a5a64;margin-top:-4px;}
+    .need-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:18px;}
+    .need-btn{border:1px solid rgba(111,45,70,.22);background:white;color:#6f2d46;border-radius:18px;padding:15px 14px;font:600 15px/1.25 Inter,sans-serif;cursor:pointer;box-shadow:0 10px 24px rgba(111,45,70,.08);transition:transform .18s ease,box-shadow .18s ease,background .18s ease;}
+    .need-btn:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(111,45,70,.12);}
+    .need-btn.selected{background:#7b2d45;color:white;}
+    .need-btn:disabled{cursor:default;opacity:.86;}
+    .reveal{display:none;margin-top:18px;padding:18px;background:white;border-radius:18px;color:#3d3030;font-size:17px;border:1px solid rgba(111,45,70,.12);}
+    .heart-box textarea{width:100%;min-height:130px;border:1px solid rgba(111,45,70,.22);border-radius:18px;padding:16px;font-size:16px;font-family:Inter,sans-serif;background:#fff;box-sizing:border-box;resize:vertical;color:#3d3030;}
+    .submit-btn{margin-top:12px;border:0;border-radius:999px;background:#7b2d45;color:#fff;padding:13px 20px;font-weight:700;cursor:pointer;box-shadow:0 12px 30px rgba(123,45,69,.18);}
+    .saved-note{display:none;margin-top:12px;color:#6f2d46;font-weight:700;}
+    .back{display:inline-block;margin-top:22px;color:#8b2f4f;text-decoration:none;font-weight:700;}
+    @media(max-width:700px){
+      .letter{margin:22px 12px;padding:22px;border-radius:24px;}
+      .letter h1{font-size:38px;}
+      .letter h2{font-size:28px;}
+      .letter p,.letter li{font-size:16px;}
+      .photo-grid{grid-template-columns:1fr;}
+      .photo-grid img{height:auto;max-height:470px;}
+      .need-grid{grid-template-columns:1fr;}
+      .emoji-rain span{font-size:15px;}
+    }
+  </style>
+</head>
+<body>
+  <div class="emoji-rain" aria-hidden="true">
+    <span style="left:4%;animation-duration:12s;animation-delay:0s;">🌙</span>
+    <span style="left:12%;animation-duration:15s;animation-delay:2s;">🤍</span>
+    <span style="left:20%;animation-duration:13s;animation-delay:5s;">🥺</span>
+    <span style="left:29%;animation-duration:17s;animation-delay:1s;">✨</span>
+    <span style="left:38%;animation-duration:14s;animation-delay:4s;">🫶</span>
+    <span style="left:47%;animation-duration:16s;animation-delay:3s;">❤️</span>
+    <span style="left:56%;animation-duration:13s;animation-delay:7s;">🌸</span>
+    <span style="left:65%;animation-duration:18s;animation-delay:2s;">🙂</span>
+    <span style="left:74%;animation-duration:14s;animation-delay:6s;">🥺</span>
+    <span style="left:84%;animation-duration:16s;animation-delay:1s;">🤍</span>
+    <span style="left:93%;animation-duration:12s;animation-delay:4s;">✨</span>
+  </div>
+  <div class="hearts" aria-hidden="true"></div>
+  <main class="page-shell">
+    <section class="letter">
+      <div class="photo-grid">
+        <img src="photos/day%201%20(17).jpeg" alt="Golu Babu">
+        <img src="photos/day%201%20(19).jpeg" alt="Golu Babu">
+      </div>
+
+      <p class="eyebrow">Day 6</p>
+      <h1>The Place Where You Don't Have To Hide</h1>
+
+      <p>Today, this page is not here to ask anything from you.</p>
+      <p>Not time. Not answers. Not explanations. Not promises.</p>
+      <p>Today, this page is just a small place where you can come and breathe for a minute.</p>
+
+      <div class="soft-card">
+        <h2>Because I know you carry a lot</h2>
+        <p>Your home. Your body. Your pain. Your thoughts. Your future. Your responsibilities.</p>
+        <p>And somewhere between all of this, you still try to care, reply, listen, and be present in your own way.</p>
+      </div>
+
+      <p>I know there are parts of your life you cannot explain fully. I know there are things you carry quietly. I know there are boundaries, realities, responsibilities, and thoughts that are not easy to put into words.</p>
+      <p>And I don't want to force those words out of you.</p>
+      <p>I just want you to know that with me, you don't have to become perfect before you speak.</p>
+      <p>You don't have to arrange every sentence properly. You don't have to worry that I will judge you for feeling confused, tired, irritated, emotional, silent, or not okay.</p>
+
+      <div class="quote">
+        <p>Maybe sometimes your “hmm” is not an answer to decode.</p>
+        <p>Maybe it simply means: “I am tired. I am in pain. I don't have energy to explain. I am still here, but softly.”</p>
+      </div>
+
+      <p>I may not always react perfectly. Sometimes I get hurt. Sometimes I overthink. Sometimes I ask for more because I miss you more than I know how to say.</p>
+      <p>But beneath all of that, there is one truth that does not change:</p>
+      <div class="quote"><p><b>I am on your side.</b></p></div>
+
+      <p>Today, when you video called me just to check how I was, it stayed with me.</p>
+      <p>It was only a few minutes. But sometimes a few minutes are enough to tell a person, “I noticed you were not okay.”</p>
+      <p>And Golu Babu, that matters to me more than I can explain.</p>
+
+      <p>You said small small things make you smile. And maybe that is exactly what this whole vault is.</p>
+      <p>Small small things. A line. A memory. A page. A photo. A stupid Dhakkan joke. A sentence like, “thoda sa tum ho, thoda sa main ho, thoda sa hum.”</p>
+
+      <div class="soft-card">
+        <h2>You are safe here</h2>
+        <p>You can come to me with your softer side, your irritated side, your confused side, your silent side, your caring side, your “hmm” side, and your “I don't know what to say” side.</p>
+        <p>I will not judge you. I will not make you feel small for being honest. I will not use your truth against you.</p>
+        <p>I may lovingly scold you when you do something silly. I may call you out when you pretend not to care. I may behave like a Dhakkan sometimes. But I will still be the person who wants to understand you gently.</p>
+      </div>
+
+      <p>You are important to me in a way I don't know how to measure.</p>
+      <p>You are not just someone I like talking to. You are someone whose mood changes my day, whose small care stays with me, whose pain I notice, and whose happiness I genuinely wish for.</p>
+      <p>And yes, I know this is not simple. I know there are things that cannot be changed just because we feel something. I know there are realities bigger than both of us.</p>
+      <p>But even inside all of that, I want you to feel one thing clearly:</p>
+      <div class="quote"><p><b>You don't have to hide your heart from me.</b></p></div>
+
+      <div class="choice-box" id="needBox">
+        <h2>What do you need from this page today?</h2>
+        <p class="small-line"><b>Choose whatever comes first in your heart. Your choice will be saved softly, so I can understand what tomorrow should carry.</b></p>
+        <div class="need-grid">
+          <button class="need-btn" type="button" onclick="selectNeed(this,'Peace','Then I wish you peace today, Golu Babu. The kind that does not ask you to decide everything at once.')">A little peace</button>
+          <button class="need-btn" type="button" onclick="selectNeed(this,'Sleep','Then I wish you sleep without overthinking. The kind where your mind stops fighting you for a few hours.')">A little sleep</button>
+          <button class="need-btn" type="button" onclick="selectNeed(this,'Hug in words','Then imagine the safest hug in words — no questions, no explanations, just warmth.')">A hug in words</button>
+          <button class="need-btn" type="button" onclick="selectNeed(this,'No judgement','Then take this clearly: I am not here to judge you. You can be honest here, slowly.')">No judgement</button>
+          <button class="need-btn" type="button" onclick="selectNeed(this,'Silence','Then I wish you silence that feels safe, not lonely. The kind where you don't have to perform being okay.')">A little silence</button>
+          <button class="need-btn" type="button" onclick="selectNeed(this,'Smile','Then I hope one small line from this page makes you smile, even if the day is heavy.')">A small smile</button>
+        </div>
+        <div class="reveal" id="needReveal"></div>
+        <div class="saved-note" id="choiceSaved">Saved softly ❤️</div>
+      </div>
+
+      <div class="heart-box">
+        <h2>If you want to leave one small line</h2>
+        <p class="small-line">No pressure. One word is also enough. This will be saved with your Day 6 response.</p>
+        <form id="heartForm" action="https://script.google.com/macros/s/AKfycbzubZNrwwE0IS8tZjK76If5901DdDww7TxKKPWgPqkriqKVxtm_1ndD6eGj-wIBRNK1/exec" method="POST" target="day6_hidden_iframe" onsubmit="return prepareHeartSubmit();">
+          <input type="hidden" name="page" value="day6-heart-note">
+          <input type="hidden" name="quiz1" id="heartChoice" value="">
+          <input type="hidden" name="quiz2" value="">
+          <input type="hidden" name="quiz3" value="">
+          <input type="hidden" name="userAgent" id="heartUA" value="">
+          <textarea name="heartMessage" id="heartMessage" placeholder="Write anything you want to say, Golu Babu..."></textarea>
+          <br>
+          <button class="submit-btn" type="submit">Save this softly ❤️</button>
+          <div class="saved-note" id="heartSaved">Saved gently, Golu Babu ❤️</div>
+        </form>
+      </div>
+
+      <p>Whatever you can share, share slowly. Whatever you cannot share, I will still respect.</p>
+      <p>Whatever you are carrying, I hope it becomes a little lighter.</p>
+      <p>And whatever happens in life, you will always have one place where you were cared for without judgement.</p>
+      <p><b>Thoda sa tum. Thoda sa main. Thoda sa hum.</b></p>
+
+      <a class="back" href="index.html">← Back to the vault</a>
+    </section>
+  </main>
+
+  <iframe name="day6_hidden_iframe" style="display:none;"></iframe>
+  <script>
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzubZNrwwE0IS8tZjK76If5901DdDww7TxKKPWgPqkriqKVxtm_1ndD6eGj-wIBRNK1/exec";
+    let selectedNeed = "";
+    let needSaved = false;
+
+    function postHidden(payload) {
+      const form = document.createElement("form");
+      form.method = "POST";
+      form.action = SCRIPT_URL;
+      form.target = "day6_hidden_iframe";
+      Object.keys(payload).forEach(function(key) {
+        const input = document.createElement("input");
+        input.type = "hidden";
+        input.name = key;
+        input.value = payload[key] || "";
+        form.appendChild(input);
+      });
+      document.body.appendChild(form);
+      form.submit();
+      setTimeout(function(){ form.remove(); }, 800);
+    }
+
+    function selectNeed(button, value, message) {
+      if (needSaved) return;
+      selectedNeed = value;
+      document.querySelectorAll(".need-btn").forEach(function(btn){ btn.classList.remove("selected"); btn.disabled = true; });
+      button.classList.add("selected");
+      const reveal = document.getElementById("needReveal");
+      reveal.textContent = message;
+      reveal.style.display = "block";
+      document.getElementById("choiceSaved").style.display = "block";
+      needSaved = true;
+      postHidden({
+        page: "day6-need-choice",
+        quiz1: value,
+        quiz2: "What do you need from this page today?",
+        quiz3: "choice-clicked",
+        heartMessage: "",
+        userAgent: navigator.userAgent
+      });
+      const heartChoice = document.getElementById("heartChoice");
+      if (heartChoice) heartChoice.value = value;
+    }
+
+    function prepareHeartSubmit() {
+      document.getElementById("heartUA").value = navigator.userAgent;
+      document.getElementById("heartChoice").value = selectedNeed || "No need choice selected";
+      document.getElementById("heartSaved").style.display = "block";
+      setTimeout(function(){ document.getElementById("heartMessage").value = ""; }, 800);
+      return true;
+    }
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>
