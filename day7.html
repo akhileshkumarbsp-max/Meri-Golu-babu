@@ -13,13 +13,13 @@
     body{min-height:100vh;overflow-x:hidden;background:radial-gradient(circle at 14% 10%,rgba(255,196,213,.82),transparent 28%),radial-gradient(circle at 85% 15%,rgba(255,239,189,.82),transparent 26%),radial-gradient(circle at 50% 92%,rgba(226,218,255,.70),transparent 34%),linear-gradient(135deg,#fff8f2 0%,#ffe5ed 42%,#f8ecff 100%)}
     .rain{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}.rain span{position:absolute;top:-70px;animation:fall linear infinite;opacity:.58;filter:drop-shadow(0 6px 12px rgba(125,42,67,.16))}@keyframes fall{to{transform:translateY(116vh) rotate(28deg);opacity:.08}}
     .page-shell{position:relative;z-index:1}.letter{max-width:930px;margin:46px auto;padding:34px;background:rgba(255,255,255,.88);border:1px solid rgba(255,255,255,.76);border-radius:32px;box-shadow:0 28px 90px rgba(107,42,67,.16);line-height:1.9;backdrop-filter:blur(14px)}
-    .photo-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:28px}.photo-grid img{width:100%;height:330px;object-fit:contain;background:#fffaf9;border-radius:24px;box-shadow:0 14px 42px rgba(0,0,0,.12);border:1px solid rgba(255,255,255,.74)}
+    .photo-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:28px}.photo-frame{height:350px;overflow:hidden;background:#fffaf9;border-radius:24px;box-shadow:0 14px 42px rgba(0,0,0,.12);border:1px solid rgba(255,255,255,.74)}.photo-frame img{width:100%;height:100%;object-fit:cover;object-position:center 38%;transform:scale(1.06);display:block}
     .letter h1{font-family:'Cormorant Garamond',serif;font-size:52px;line-height:1.05;color:var(--deep);margin:0 0 14px}.letter h2{font-family:'Cormorant Garamond',serif;font-size:34px;color:var(--deep);margin:6px 0 12px}.letter p,.letter li{font-size:18px;color:var(--ink)}
-    .card,.quote,.quiz-box,.answer-box,.recap-box{margin:24px 0;padding:23px;background:rgba(255,247,248,.92);border:1px solid var(--line);border-radius:24px;box-shadow:0 12px 36px rgba(112,41,68,.08)}.quote{background:rgba(255,255,255,.86);border-left:5px solid rgba(118,41,67,.70)}.small-line{font-size:15px;color:#7a5965;margin-top:-4px}.note{font-weight:800;color:#762943;background:rgba(255,234,241,.82);padding:15px;border-radius:18px}.ending{font-size:20px!important;color:#762943!important}
+    .card,.quote,.quiz-box,.answer-box,.recap-box,.lyric-card{margin:24px 0;padding:23px;background:rgba(255,247,248,.92);border:1px solid var(--line);border-radius:24px;box-shadow:0 12px 36px rgba(112,41,68,.08)}.quote{background:rgba(255,255,255,.86);border-left:5px solid rgba(118,41,67,.70)}.lyric-card{background:linear-gradient(135deg,rgba(255,255,255,.88),rgba(255,237,244,.92));text-align:center}.lyric-line{font-family:'Cormorant Garamond',serif;font-size:30px!important;color:#762943!important;line-height:1.35}.small-line{font-size:15px;color:#7a5965;margin-top:-4px}.note{font-weight:800;color:#762943;background:rgba(255,234,241,.82);padding:15px;border-radius:18px}.ending{font-size:20px!important;color:#762943!important}
     .recap-scroll{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 14px;-webkit-overflow-scrolling:touch}.recap-card{min-width:250px;scroll-snap-align:start;background:#fff;border:1px solid rgba(118,41,67,.14);border-radius:20px;padding:18px;box-shadow:0 10px 28px rgba(118,41,67,.08)}.recap-card b{display:block;color:#762943;margin-bottom:8px}.recap-card span{display:block;font-size:14px;color:#7a5965;line-height:1.6}
     .option-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:16px}.opt-btn{border:1px solid rgba(118,41,67,.22);background:#fff;color:#6f2d46;border-radius:18px;padding:15px 14px;font:800 15px/1.25 Inter,sans-serif;cursor:pointer;box-shadow:0 10px 24px rgba(118,41,67,.08);transition:transform .18s ease,box-shadow .18s ease,background .18s ease}.opt-btn:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(118,41,67,.12)}.opt-btn.opened{background:#7b2d45;color:white}.reveal{display:none;margin-top:18px;padding:18px;background:#fff;border-radius:18px;color:#3d3030;font-size:17px;border:1px solid rgba(118,41,67,.12)}.saved-note{display:none;margin-top:12px;color:#762943;font-weight:800}
     textarea{width:100%;min-height:145px;border:1px solid rgba(118,41,67,.22);border-radius:18px;padding:16px;font-size:16px;font-family:Inter,sans-serif;background:#fff;box-sizing:border-box;resize:vertical;color:#3d3030}.submit-btn{margin-top:12px;border:0;border-radius:999px;background:#7b2d45;color:#fff;padding:13px 20px;font-weight:800;cursor:pointer;box-shadow:0 12px 30px rgba(123,45,69,.18)}.back{display:inline-block;margin-top:22px;color:#8b2f4f;text-decoration:none;font-weight:800}
-    @media(max-width:700px){.letter{margin:20px 12px;padding:21px;border-radius:25px}.letter h1{font-size:37px}.letter h2{font-size:28px}.letter p,.letter li{font-size:16px}.photo-grid{grid-template-columns:1fr}.photo-grid img{height:auto;max-height:470px}.option-grid{grid-template-columns:1fr}.rain span{font-size:28px!important}.submit-btn{width:100%;padding:14px 18px}.card,.quote,.quiz-box,.answer-box,.recap-box{padding:19px;border-radius:21px}.recap-card{min-width:78vw}}
+    @media(max-width:700px){.letter{margin:20px 12px;padding:21px;border-radius:25px}.letter h1{font-size:37px}.letter h2{font-size:28px}.letter p,.letter li{font-size:16px}.photo-grid{grid-template-columns:1fr}.photo-frame{height:330px}.photo-frame img{transform:scale(1.05);object-position:center 35%}.option-grid{grid-template-columns:1fr}.rain span{font-size:28px!important}.submit-btn{width:100%;padding:14px 18px}.card,.quote,.quiz-box,.answer-box,.recap-box,.lyric-card{padding:19px;border-radius:21px}.recap-card{min-width:78vw}.lyric-line{font-size:25px!important}}
   </style>
 </head>
 <body>
@@ -28,17 +28,24 @@
   </div>
   <div class="hearts" aria-hidden="true"></div>
   <main class="page-shell"><section class="letter">
-    <div class="photo-grid"><img src="photos/day%201%20(20).jpeg" alt="Golu Babu"><img src="photos/day%201%20(22).jpeg" alt="Golu Babu"></div>
+    <div class="photo-grid"><div class="photo-frame"><img src="photos/day%201%20(20).jpeg" alt="Golu Babu"></div><div class="photo-frame"><img src="photos/day%201%20(22).jpeg" alt="Golu Babu"></div></div>
     <p class="eyebrow">Day 7</p>
     <h1>The Things We Fight About Are Not Always The Real Things</h1>
-    <p>Today I do not want this page to pretend that everything between us is always soft.</p>
+    <p>Today I do not want this page to pretend that everything between us is always easy.</p>
     <p>It is not.</p>
     <p>We misunderstand each other. We fight over small things. Office. Lunch. Messages. Waiting. Time. A missed reply. A missed moment. A plan that does not happen.</p>
-    <div class="quote"><p>And sometimes, from outside, it may look like these are very small things.</p><p>But they do not feel small to me when they are connected to you.</p></div>
-    <p>Because most of the time, I am not really fighting about that one thing. I am fighting with the fear behind it.</p>
-    <p>The fear that maybe I do not matter as much as you matter to me. The fear that maybe one day this little space between us will change. The fear that maybe I am holding something too deeply and I do not know where to keep it.</p>
+    <div class="quote"><p>And sometimes, from outside, maybe these things look small.</p><p>But they do not feel small to me when they are connected to you.</p></div>
+    <p>Because most of the time, I am not really fighting about that one thing.</p>
+    <p>I am fighting with the fear behind it.</p>
+    <p>The fear that maybe I do not matter as much as you matter to me. The fear that maybe I am asking for a place in your day that life does not easily allow. The fear that maybe something soft between us will slowly become distance.</p>
     <p>And when that fear comes, I do not always speak properly.</p>
-    <p>Sometimes my “I miss you” comes out as “you do not give me time.” Sometimes my “I needed you today” comes out like a complaint. Sometimes my love becomes restless, and that is where I go wrong.</p>
+    <p>Sometimes I taunt. Sometimes I sound angry. Sometimes I say things in a way that hurts you.</p>
+    <p>Sometimes my “I miss you” comes out as “you do not give me time.” Sometimes my “I needed you today” comes out like a complaint.</p>
+    <p>Sometimes my love becomes restless, and that is where I go wrong.</p>
+    <p>But the truth underneath it is simple.</p>
+    <p>I am not trying to fight with you.</p>
+    <p>I am trying, very badly sometimes, to say that you have become very important to me.</p>
+    <p>Maybe that is why small things hurt more than they should.</p>
 
     <div class="recap-box">
       <h2>A small recap of these six days</h2>
@@ -106,7 +113,7 @@
       <p>I get scared.</p>
       <p>And somewhere in between, both of us get hurt.</p>
       <p>I do not want that.</p>
-      <p>I dont want my love to hurt you.</p>
+      <p>I do not want my love to hurt you.</p>
       <p>But I also do not want my pain to become invisible.</p>
       <p>So I am writing it here, calmly, because I do not always say it calmly:</p>
       <p>When I ask for time, I am not always asking for a plan.</p>
@@ -119,26 +126,55 @@
     </div>
 
     <div class="card">
-      <h2>Both sides of the same feeling</h2>
+      <h2>Your side also matters</h2>
       <p>This page is not only about my pain.</p>
-      <p>I know you also have your side. Your body pain. Your home. Your work. Your responsibilities. Your family. Your limits. Your thoughts that may not come out in simple words.</p>
-      <p>Maybe when I keep asking from my hurt, you feel tired too. Maybe you feel helpless. Maybe you feel like even when you care, you still cannot give what I am asking for.</p>
+      <p>Because I know you also have your side.</p>
+      <p>Your body pain. Your home. Your work. Your responsibilities. Your family. Your limits. Your own thoughts that you may not always be able to explain.</p>
+      <p>And maybe when I keep asking from my hurt, you feel tired too.</p>
+      <p>Maybe you feel helpless.</p>
+      <p>Maybe you feel like even when you care, you still cannot give what I am asking for.</p>
+      <p>Maybe you feel bad because you are also stuck between what you feel and what life allows.</p>
       <p>I know this is not simple for you either.</p>
-      <p>That is why these fights hurt differently. It is not like care is missing. Care is there. Feeling is there. Softness is there. But still, we hurt each other.</p>
-      <p>You feel pressure. I feel distance. You become quiet because you are tired. I become restless because I am scared.</p>
-      <p>And then both of us stand with the same feeling, but on different sides of it.</p>
+      <p>That is why these fights hurt differently.</p>
+      <p>Because it is not like care is missing.</p>
+      <p>Care is there. Feeling is there. Softness is there.</p>
+      <p>But still, we hurt each other.</p>
+      <p>You hurt because you have limits. I hurt because I miss you.</p>
+      <p>You become quiet because you are tired. I become restless because I am scared.</p>
+      <p>You say “let's not discuss.” I hear it like distance.</p>
+      <p>I say something sharp. You feel I am not understanding.</p>
+      <p>And then both of us stand there with the same feeling, but on different sides of it.</p>
     </div>
 
-    <div class="quote"><p>I do not want every small thing to become proof of who cares more and who cares less.</p><p>I do not want my pain to become pressure for you. And I do not want your silence to become fear for me.</p></div>
-
     <div class="card">
-      <h2>What I want you to understand</h2>
-      <p>I want to learn to say “I miss you” without turning it into a taunt.</p>
-      <p>I want to learn to say “I needed you today” without making you feel guilty.</p>
-      <p>And I want you to feel safe enough to tell me your side, even when it is personal, messy, incomplete, or difficult to explain.</p>
-      <p>Not because I want to judge you.</p>
-      <p>But because I want to understand you.</p>
-      <p>Because you matter to me even when we fight. Even when you are tired. Even when I am hurt. Even when both of us do not know how to say things properly.</p>
+      <h2>What I want you to know</h2>
+      <p>Kanika, you matter to me.</p>
+      <p>Not only on good days.</p>
+      <p>Not only when we are laughing.</p>
+      <p>Not only when you are soft.</p>
+      <p>You matter to me even when we misunderstand each other.</p>
+      <p>Even when you are tired.</p>
+      <p>Even when you are irritated.</p>
+      <p>Even when I am hurt.</p>
+      <p>Even when both of us do not know how to say things properly.</p>
+      <p>I do not want perfect.</p>
+      <p>I do not want easy.</p>
+      <p>I do not want a version of you that hides everything difficult.</p>
+      <p>I want to understand you.</p>
+      <p>And I want you to understand the pain behind my anger too.</p>
+      <p>Because most of the time, I am not angry because I care less.</p>
+      <p>I am angry because I care too much and do not know where to keep it.</p>
+      <p>So if we fight, I hope we still remember this:</p>
+      <p>There is care underneath.</p>
+      <p>There is love underneath.</p>
+      <p>There is fear underneath.</p>
+      <p>There is “I do not want to lose this” underneath.</p>
+      <p>And there is still us.</p>
+    </div>
+
+    <div class="lyric-card">
+      <p class="lyric-line">Kaisi adhuri ada… meri aankhon mein toh dekho.</p>
+      <p>Because sometimes I feel like the things I cannot say properly are still visible there.</p>
     </div>
 
     <div class="quiz-box" id="quiz1">
