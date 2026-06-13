@@ -317,3 +317,20 @@ h1 {
     min-height: 184px;
   }
 }
+
+/* Birthday cake reveal photo fix: show full photo instead of cropping it. */
+.our-polaroid img {
+  width: 100% !important;
+  height: auto !important;
+  max-height: 360px !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+  background: #fff8f2 !important;
+  display: block !important;
+}
+
+@media (max-width: 560px) {
+  .our-polaroid img {
+    max-height: 300px !important;
+  }
+}
