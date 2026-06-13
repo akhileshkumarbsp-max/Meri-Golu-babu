@@ -221,10 +221,81 @@ function setupBirthdayExtras() {
   }
 }
 
+function setupChikuBirthdayTouch() {
+  const shell = document.querySelector(".birthday-shell");
+  if (!shell || document.body.dataset.chikuBirthdayTouch === "done") return;
+  document.body.dataset.chikuBirthdayTouch = "done";
+
+  const style = document.createElement("style");
+  style.textContent = `
+    body{background:radial-gradient(circle at 10% 10%,rgba(255,225,196,.92),transparent 28%),radial-gradient(circle at 88% 12%,rgba(229,176,112,.60),transparent 26%),radial-gradient(circle at 50% 100%,rgba(255,220,232,.78),transparent 34%),linear-gradient(135deg,#fff8ed 0%,#ffe9d1 34%,#ffdce8 72%,#fff7ef 100%) !important;}
+    .hero,.section{border-color:rgba(154,91,43,.18)!important;}
+    .chiku-section{background:linear-gradient(135deg,rgba(255,247,232,.98),rgba(249,223,191,.90),rgba(255,232,241,.92));border:1px solid rgba(154,91,43,.22);text-align:center;}
+    .chiku-section:before,.chiku-section:after{content:"";position:absolute;border-radius:50%;background:rgba(154,91,43,.14);filter:blur(.2px);}
+    .chiku-section:before{width:54px;height:54px;left:22px;top:22px;}
+    .chiku-section:after{width:72px;height:72px;right:24px;bottom:24px;}
+    .chiku-inner{position:relative;z-index:1;max-width:790px;margin:0 auto;}
+    .chiku-btn{margin:18px auto 0;border:0;border-radius:999px;padding:14px 22px;background:#7b4b2a;color:#fff;font:800 16px/1.2 Inter,sans-serif;box-shadow:0 16px 34px rgba(123,75,42,.22);cursor:pointer;display:inline-flex;align-items:center;gap:10px;animation:chikuWiggle 2.2s ease-in-out infinite;}
+    .chiku-dot{width:34px;height:34px;border-radius:50%;background:radial-gradient(circle at 35% 28%,#d9a86f 0 18%,#9c6235 42%,#6f3f22 100%);box-shadow:inset -5px -7px 9px rgba(80,43,24,.22),0 7px 14px rgba(80,43,24,.14);}
+    .chiku-reveal{display:none;margin:18px auto 0;padding:20px;border-radius:24px;background:rgba(255,255,255,.82);border:1px solid rgba(123,75,42,.20);box-shadow:0 15px 38px rgba(123,75,42,.13);text-align:left;}
+    .chiku-reveal.show{display:block;animation:popIn .35s ease;}
+    .chiku-reveal p{margin:8px 0;}
+    @keyframes chikuWiggle{0%,100%{transform:rotate(0deg) translateY(0)}50%{transform:rotate(-2deg) translateY(-4px)}}
+    @media(max-width:720px){.chiku-section{text-align:left}.chiku-section:before,.chiku-section:after{opacity:.35}.chiku-btn{width:100%;justify-content:center}.chiku-reveal{text-align:left;padding:16px}.chiku-inner{text-align:left}}
+  `;
+  document.head.appendChild(style);
+
+  function submitChiku(page, quiz1, quiz2, quiz3, heartMessage) {
+    if (typeof window.submitBirthday === "function") {
+      window.submitBirthday(page, quiz1, quiz2, quiz3, heartMessage);
+    }
+  }
+
+  function sectionByHeading(text) {
+    return Array.from(document.querySelectorAll(".section")).find((sec) => {
+      const heading = sec.querySelector("h2,.big");
+      return heading && heading.textContent.toLowerCase().includes(text.toLowerCase());
+    });
+  }
+
+  const cakeSection = sectionByHeading("One birthday cake");
+  const chikuSection = document.createElement("section");
+  chikuSection.className = "section chiku-section";
+  chikuSection.innerHTML = `
+    <div class="chiku-inner">
+      <h2>For the girl who loves Chiku</h2>
+      <p>I added one more tiny thing here. Not a cake. Not a flower. A little chiku corner.</p>
+      <p>Because some people like fancy things. And some people are Golu Babu — who can love something as simple and sweet as chiku.</p>
+      <p>So this little corner is for that soft, simple, cute part of you.</p>
+      <button class="chiku-btn" type="button" aria-label="Tap the chiku"><span class="chiku-dot"></span><span>Tap the chiku</span></button>
+      <div class="chiku-reveal">
+        <p><b>You are my Chiku-loving Golu Babu.</b></p>
+        <p>Soft in places you hide.</p>
+        <p>Sweet in ways you do not always show.</p>
+        <p>And very, very special in ways you probably still do not fully understand.</p>
+        <p><span class="soft-line">Happy Birthday, meri sweet Babbu ❤️</span></p>
+      </div>
+    </div>`;
+
+  if (cakeSection) {
+    cakeSection.insertAdjacentElement("afterend", chikuSection);
+  } else {
+    shell.insertBefore(chikuSection, shell.children[2] || null);
+  }
+
+  const chikuBtn = chikuSection.querySelector(".chiku-btn");
+  const chikuReveal = chikuSection.querySelector(".chiku-reveal");
+  chikuBtn.addEventListener("click", () => {
+    chikuReveal.classList.add("show");
+    submitChiku("birthday-chiku", "Chiku surprise clicked", "For the girl who loves Chiku", "chiku-click", "You are my Chiku-loving Golu Babu | Happy Birthday meri sweet Babbu");
+  });
+}
+
 updateCountdown();
 updateCards();
 setupCardClicks();
 setupBirthdayExtras();
+setupChikuBirthdayTouch();
 setInterval(updateCountdown, 1000);
 setInterval(updateCards, 60 * 1000);
 setInterval(createHeart, 700);
