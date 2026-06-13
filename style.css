@@ -374,3 +374,27 @@ h1 {
     margin: 12px auto 0 !important;
   }
 }
+
+/* Final cake reveal photo fix: use a complete together photo instead of the cropped cup photo. */
+.cake-reveal .our-polaroid {
+  position: relative !important;
+}
+
+.cake-reveal .our-polaroid img {
+  display: none !important;
+}
+
+.cake-reveal .our-polaroid::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: min(64vw, 430px);
+  border-radius: 10px;
+  background: #fff8f2 url("photos/day%201%20(7).jpeg") center center / contain no-repeat;
+}
+
+@media (max-width: 560px) {
+  .cake-reveal .our-polaroid::before {
+    height: 300px;
+  }
+}
