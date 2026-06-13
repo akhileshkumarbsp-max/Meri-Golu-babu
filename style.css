@@ -398,3 +398,184 @@ h1 {
     height: 300px;
   }
 }
+
+/* Mobile web polish for the birthday page: every section must fit cleanly on small screens. */
+@media (max-width: 760px) {
+  .birthday-shell {
+    width: calc(100% - 14px) !important;
+    margin: 10px auto 30px !important;
+  }
+
+  .hero {
+    padding: 34px 16px 28px !important;
+    border-radius: 28px !important;
+  }
+
+  .hero::before,
+  .hero::after {
+    font-size: 30px !important;
+    top: 12px !important;
+  }
+
+  .hero::before { left: 12px !important; }
+  .hero::after { right: 12px !important; }
+
+  .hero h1 {
+    font-size: clamp(44px, 14vw, 72px) !important;
+    line-height: 0.95 !important;
+  }
+
+  .hero .sub {
+    font-size: clamp(20px, 6vw, 28px) !important;
+    line-height: 1.18 !important;
+  }
+
+  .hero .note,
+  .section p {
+    font-size: 16px !important;
+    line-height: 1.72 !important;
+    overflow-wrap: break-word !important;
+  }
+
+  .section {
+    margin-top: 18px !important;
+    padding: 22px 15px !important;
+    border-radius: 24px !important;
+  }
+
+  .section h2 {
+    font-size: clamp(32px, 10vw, 44px) !important;
+    line-height: 1.05 !important;
+  }
+
+  .section h3 {
+    font-size: 26px !important;
+    line-height: 1.12 !important;
+  }
+
+  .photo-marquee {
+    border-radius: 22px !important;
+    padding: 9px !important;
+  }
+
+  .photo-track img {
+    width: 136px !important;
+    height: 190px !important;
+    transform: none !important;
+    border-radius: 18px !important;
+  }
+
+  .time-bubbles,
+  .mini-stats,
+  .quote-grid,
+  .wish-grid,
+  .birthday-choice-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .time-bubbles {
+    gap: 10px !important;
+  }
+
+  .time-bubble {
+    padding: 16px 10px !important;
+    border-radius: 20px !important;
+  }
+
+  .mini-stat,
+  .wish,
+  .wish-btn {
+    width: 100% !important;
+  }
+
+  .recap-scroll {
+    gap: 10px !important;
+    padding-bottom: 12px !important;
+  }
+
+  .recap-card {
+    flex: 0 0 min(86vw, 310px) !important;
+    padding: 18px !important;
+  }
+
+  .cake-btn {
+    font-size: 82px !important;
+  }
+
+  .cake-reveal {
+    width: 100% !important;
+    padding: 18px 12px !important;
+    border-radius: 22px !important;
+  }
+
+  .our-polaroid {
+    width: min(100%, 330px) !important;
+    max-width: 100% !important;
+    padding: 8px 8px 16px !important;
+    transform: none !important;
+  }
+
+  .cake-reveal .our-polaroid::before {
+    height: auto !important;
+    aspect-ratio: 4 / 5 !important;
+    max-height: 440px !important;
+    background-position: top center !important;
+    background-size: contain !important;
+  }
+
+  .our-polaroid small {
+    font-size: 18px !important;
+    line-height: 1.15 !important;
+  }
+
+  .floating-photo,
+  .floating-photo.left,
+  .letter .floating-photo,
+  .love-letter .floating-photo,
+  .letter .floating-photo.left,
+  .love-letter .floating-photo.left {
+    position: relative !important;
+    float: none !important;
+    display: block !important;
+    width: min(56vw, 150px) !important;
+    height: auto !important;
+    aspect-ratio: 4 / 5 !important;
+    object-fit: cover !important;
+    margin: 16px auto 6px !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    top: auto !important;
+    z-index: 0 !important;
+  }
+
+  .heart-box textarea {
+    min-height: 120px !important;
+    font-size: 16px !important;
+  }
+
+  .submit-btn {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .birthday-shell {
+    width: calc(100% - 10px) !important;
+  }
+
+  .section {
+    padding: 20px 13px !important;
+  }
+
+  .time-bubble b {
+    font-size: 38px !important;
+  }
+
+  .party-line {
+    display: flex !important;
+    white-space: normal !important;
+    text-align: center !important;
+    justify-content: center !important;
+  }
+}
