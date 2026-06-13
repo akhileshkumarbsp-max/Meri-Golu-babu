@@ -82,9 +82,102 @@ function createHeart() {
   heart.style.height = `${size}px`;
   heart.style.animationDuration = `${Math.random() * 4 + 6}s`;
   heart.style.background = `rgba(184, 74, 98, ${Math.random() * 0.28 + 0.22})`;
-
   heartsContainer.appendChild(heart);
   window.setTimeout(() => heart.remove(), 11000);
+}
+
+function birthdaySubmit(page, quiz1, quiz2, quiz3, heartMessage) {
+  if (typeof window.submitBirthday === "function") {
+    window.submitBirthday(page, quiz1, quiz2, quiz3, heartMessage);
+  }
+}
+
+function findBirthdaySection(text) {
+  return Array.from(document.querySelectorAll(".section")).find((sec) => {
+    const heading = sec.querySelector("h2,.big");
+    return heading && heading.textContent.toLowerCase().includes(text.toLowerCase());
+  });
+}
+
+function setupBirthdayReel() {
+  const shell = document.querySelector(".birthday-shell");
+  if (!shell || document.body.dataset.birthdayReel === "done") return;
+  document.body.dataset.birthdayReel = "done";
+
+  const style = document.createElement("style");
+  style.textContent = `
+    .mini-reel-section{background:linear-gradient(135deg,rgba(255,247,239,.98),rgba(255,230,242,.94));text-align:center;}
+    .mini-reel-wrap{display:grid;grid-template-columns:minmax(0,360px) minmax(0,1fr);gap:22px;align-items:center;margin-top:18px;}
+    .phone-reel{position:relative;width:min(320px,100%);aspect-ratio:9/16;margin:0 auto;border-radius:38px;padding:12px;background:#21131b;box-shadow:0 28px 70px rgba(71,30,50,.26);overflow:hidden;border:8px solid #fff;}
+    .phone-reel:before{content:"";position:absolute;top:10px;left:50%;width:74px;height:6px;border-radius:999px;background:rgba(255,255,255,.38);transform:translateX(-50%);z-index:5;}
+    .reel-screen{position:relative;width:100%;height:100%;overflow:hidden;border-radius:26px;background:linear-gradient(160deg,#fff1dc,#ffdce8 45%,#fff7ef);}
+    .reel-screen img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.10);filter:saturate(1.04);}
+    .reel-screen.play img:nth-child(1){animation:reelPhoto 18s linear infinite 0s;}
+    .reel-screen.play img:nth-child(2){animation:reelPhoto 18s linear infinite 3s;}
+    .reel-screen.play img:nth-child(3){animation:reelPhoto 18s linear infinite 6s;}
+    .reel-screen.play img:nth-child(4){animation:reelPhoto 18s linear infinite 9s;}
+    .reel-screen.play img:nth-child(5){animation:reelPhoto 18s linear infinite 12s;}
+    .reel-screen.play img:nth-child(6){animation:reelPhoto 18s linear infinite 15s;}
+    @keyframes reelPhoto{0%{opacity:0;transform:scale(1.16) translateY(8px)}5%,15%{opacity:1;transform:scale(1.05) translateY(0)}22%,100%{opacity:0;transform:scale(1.12) translateY(-8px)}}
+    .reel-overlay{position:absolute;inset:auto 14px 18px 14px;z-index:4;text-align:left;color:#fff;text-shadow:0 3px 14px rgba(0,0,0,.55);}
+    .reel-overlay b{display:block;font-family:'Cormorant Garamond',serif;font-size:32px;line-height:1.05;margin-bottom:8px;}
+    .reel-overlay span{display:block;font-weight:800;font-size:14px;line-height:1.5;}
+    .reel-hearts{position:absolute;inset:0;z-index:3;pointer-events:none;overflow:hidden;}
+    .reel-hearts i{position:absolute;font-style:normal;bottom:-28px;animation:reelHeart 4.2s ease-in-out infinite;opacity:.86;}
+    .reel-hearts i:nth-child(1){left:14%;animation-delay:.2s}.reel-hearts i:nth-child(2){left:68%;animation-delay:1.1s}.reel-hearts i:nth-child(3){left:45%;animation-delay:2s}.reel-hearts i:nth-child(4){left:82%;animation-delay:2.7s}
+    @keyframes reelHeart{to{transform:translateY(-390px) rotate(18deg) scale(1.7);opacity:0}}
+    .reel-copy{text-align:left;}
+    .reel-copy p{margin:10px 0;}
+    .reel-btn{border:0;border-radius:999px;background:#7b2d45;color:#fff;padding:14px 20px;font:800 16px/1.2 Inter,sans-serif;cursor:pointer;box-shadow:0 16px 36px rgba(123,45,69,.20);margin-top:12px;}
+    .reel-btn:active{transform:scale(.98)}
+    .reel-note{display:none;margin-top:16px;padding:16px;border-radius:22px;background:rgba(255,255,255,.80);border:1px solid rgba(116,45,72,.16);font-weight:800;color:#742d48;line-height:1.6;}
+    .reel-note.show{display:block;animation:popIn .35s ease;}
+    @media(max-width:760px){.mini-reel-section{text-align:left}.mini-reel-wrap{grid-template-columns:1fr}.phone-reel{width:min(300px,88vw);}.reel-copy{text-align:left}.reel-btn{width:100%}.reel-overlay b{font-size:28px}}
+  `;
+  document.head.appendChild(style);
+
+  const reelSection = document.createElement("section");
+  reelSection.className = "section mini-reel-section";
+  reelSection.innerHTML = `
+    <h2>A small reel of us ❤️</h2>
+    <p>Something like a tiny reel inside this birthday vault — photos, hearts, and one week of trying to make you feel special.</p>
+    <div class="mini-reel-wrap">
+      <div class="phone-reel" aria-label="A small reel of us">
+        <div class="reel-screen" id="birthdayMiniReel">
+          <img src="photos/day%201%20(1).jpeg" onerror="this.remove()" alt="reel memory">
+          <img src="photos/day%201%20(2).jpeg" onerror="this.remove()" alt="reel memory">
+          <img src="photos/day%201%20(3).jpeg" onerror="this.remove()" alt="reel memory">
+          <img src="photos/day%201%20(4).jpeg" onerror="this.remove()" alt="reel memory">
+          <img src="photos/day%201%20(5).jpeg" onerror="this.remove()" alt="reel memory">
+          <img src="photos/day%201%20(6).jpeg" onerror="this.remove()" alt="reel memory">
+          <div class="reel-hearts"><i>❤️</i><i>💗</i><i>✨</i><i>🫶</i></div>
+          <div class="reel-overlay"><b>7 days.</b><span>So many pages. So many changes. So many little feelings. All for one Golu Babu.</span></div>
+        </div>
+      </div>
+      <div class="reel-copy">
+        <h3>Tap to open one small reel</h3>
+        <p>This is not just a page. This is one week of trying to make you feel seen, cared for, and celebrated.</p>
+        <p>Thoda photos. Thoda hearts. Thoda madness. Aur dher saara pyaar.</p>
+        <button class="reel-btn" type="button">Tap to open one small reel ❤️</button>
+        <div class="reel-note">Happy Birthday, meri Babbu Golu Babu ❤️<br>Dher saara pyaar. This tiny reel is also for you.</div>
+      </div>
+    </div>`;
+
+  const photoReel = findBirthdaySection("Photo memory reel");
+  if (photoReel) {
+    photoReel.insertAdjacentElement("afterend", reelSection);
+  } else {
+    shell.insertBefore(reelSection, shell.children[1] || null);
+  }
+
+  const btn = reelSection.querySelector(".reel-btn");
+  const screen = reelSection.querySelector("#birthdayMiniReel");
+  const note = reelSection.querySelector(".reel-note");
+  btn.addEventListener("click", () => {
+    screen.classList.add("play");
+    note.classList.add("show");
+    birthdaySubmit("birthday-mini-reel", "Small reel opened", "Tap to open one small reel", "reel-click", "Happy Birthday meri Babbu Golu Babu | Dher saara pyaar");
+  });
 }
 
 function setupBirthdayExtras() {
@@ -110,12 +203,6 @@ function setupBirthdayExtras() {
   `;
   document.head.appendChild(style);
 
-  function submitExtra(page, quiz1, quiz2, quiz3, heartMessage) {
-    if (typeof window.submitBirthday === "function") {
-      window.submitBirthday(page, quiz1, quiz2, quiz3, heartMessage);
-    }
-  }
-
   function makeMusicSection(title, intro, btnText, videoId, startSeconds, tag) {
     const section = document.createElement("section");
     section.className = "section extra-birthday-section music-section";
@@ -135,16 +222,9 @@ function setupBirthdayExtras() {
     btn.addEventListener("click", () => {
       reveal.classList.add("show");
       iframe.src = `https://www.youtube.com/embed/${videoId}?start=${startSeconds}&autoplay=1&rel=0`;
-      submitExtra("birthday-music", tag, "Music clicked", `start-${startSeconds}`, btnText);
+      birthdaySubmit("birthday-music", tag, "Music clicked", `start-${startSeconds}`, btnText);
     });
     return section;
-  }
-
-  function sectionByHeading(text) {
-    return Array.from(document.querySelectorAll(".section")).find((sec) => {
-      const heading = sec.querySelector("h2,.big");
-      return heading && heading.textContent.toLowerCase().includes(text.toLowerCase());
-    });
   }
 
   const birthdayLetter = document.querySelector(".letter");
@@ -160,7 +240,7 @@ function setupBirthdayExtras() {
     shell.insertBefore(englishMusic, birthdayLetter);
   }
 
-  const loveSection = sectionByHeading("A little truth from my heart");
+  const loveSection = findBirthdaySection("A little truth from my heart");
   if (loveSection) {
     const hindiMusic = makeMusicSection(
       "Read this part with one song feeling 🎵",
@@ -173,7 +253,7 @@ function setupBirthdayExtras() {
     shell.insertBefore(hindiMusic, loveSection);
   }
 
-  const beforeLetter = sectionByHeading("Before the birthday letter");
+  const beforeLetter = findBirthdaySection("Before the birthday letter");
   if (beforeLetter) {
     const wordsSection = document.createElement("section");
     wordsSection.className = "section extra-birthday-section";
@@ -189,7 +269,7 @@ function setupBirthdayExtras() {
       </div>
       <p><span class="soft-line">If these pages made you feel even a little of this, then this vault did what it was made for.</span></p>`;
     wordsSection.querySelectorAll(".word-chip").forEach((btn) => {
-      btn.addEventListener("click", () => submitExtra("birthday-her-words", btn.textContent, "Her words opened", "quote-click", "Your words I will never forget"));
+      btn.addEventListener("click", () => birthdaySubmit("birthday-her-words", btn.textContent, "Her words opened", "quote-click", "Your words I will never forget"));
     });
     beforeLetter.insertAdjacentElement("afterend", wordsSection);
   }
@@ -214,7 +294,7 @@ function setupBirthdayExtras() {
       btn.addEventListener("click", () => {
         msg.textContent = btn.dataset.msg;
         msg.classList.add("show");
-        submitExtra("birthday-open-when", btn.textContent, "Open when card clicked", "later-card", btn.dataset.msg);
+        birthdaySubmit("birthday-open-when", btn.textContent, "Open when card clicked", "later-card", btn.dataset.msg);
       });
     });
     shell.insertBefore(openWhen, finalSection);
@@ -245,20 +325,7 @@ function setupChikuBirthdayTouch() {
   `;
   document.head.appendChild(style);
 
-  function submitChiku(page, quiz1, quiz2, quiz3, heartMessage) {
-    if (typeof window.submitBirthday === "function") {
-      window.submitBirthday(page, quiz1, quiz2, quiz3, heartMessage);
-    }
-  }
-
-  function sectionByHeading(text) {
-    return Array.from(document.querySelectorAll(".section")).find((sec) => {
-      const heading = sec.querySelector("h2,.big");
-      return heading && heading.textContent.toLowerCase().includes(text.toLowerCase());
-    });
-  }
-
-  const cakeSection = sectionByHeading("One birthday cake");
+  const cakeSection = findBirthdaySection("One birthday cake");
   const chikuSection = document.createElement("section");
   chikuSection.className = "section chiku-section";
   chikuSection.innerHTML = `
@@ -287,13 +354,14 @@ function setupChikuBirthdayTouch() {
   const chikuReveal = chikuSection.querySelector(".chiku-reveal");
   chikuBtn.addEventListener("click", () => {
     chikuReveal.classList.add("show");
-    submitChiku("birthday-chiku", "Chiku surprise clicked", "For the girl who loves Chiku", "chiku-click", "You are my Chiku-loving Golu Babu | Happy Birthday meri sweet Babbu");
+    birthdaySubmit("birthday-chiku", "Chiku surprise clicked", "For the girl who loves Chiku", "chiku-click", "You are my Chiku-loving Golu Babu | Happy Birthday meri sweet Babbu");
   });
 }
 
 updateCountdown();
 updateCards();
 setupCardClicks();
+setupBirthdayReel();
 setupBirthdayExtras();
 setupChikuBirthdayTouch();
 setInterval(updateCountdown, 1000);
