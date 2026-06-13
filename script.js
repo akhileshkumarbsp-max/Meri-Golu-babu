@@ -1,5 +1,6 @@
 const birthdayMonth = 5;
 const birthdayDay = 14;
+const vaultYear = 2026;
 const countdownIds = ["days", "hours", "minutes", "seconds"];
 const heartsContainer = document.querySelector(".hearts");
 
@@ -41,10 +42,10 @@ function updateCountdown() {
 }
 
 function isCardUnlocked(card) {
+  if (!card.dataset.unlock) return false;
   const now = new Date();
-  const targetYear = getBirthdayTarget().getFullYear();
   const [month, day] = card.dataset.unlock.split("-").map(Number);
-  const unlockDate = new Date(targetYear, month - 1, day, 0, 0, 0);
+  const unlockDate = new Date(vaultYear, month - 1, day, 0, 0, 0);
   return now >= unlockDate;
 }
 
@@ -97,6 +98,14 @@ function findBirthdaySection(text) {
     const heading = sec.querySelector("h2,.big");
     return heading && heading.textContent.toLowerCase().includes(text.toLowerCase());
   });
+}
+
+function hideOriginalPhotoReel() {
+  const photoReel = findBirthdaySection("Photo memory reel");
+  if (photoReel) {
+    photoReel.style.display = "none";
+    photoReel.setAttribute("aria-hidden", "true");
+  }
 }
 
 function setupBirthdayReel() {
@@ -178,6 +187,8 @@ function setupBirthdayReel() {
     note.classList.add("show");
     birthdaySubmit("birthday-mini-reel", "Small reel opened", "Tap to open one small reel", "reel-click", "Happy Birthday meri Babbu Golu Babu | Dher saara pyaar");
   });
+
+  hideOriginalPhotoReel();
 }
 
 function setupBirthdayExtras() {
